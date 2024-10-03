@@ -71,10 +71,8 @@
             <p v-else class="text-gray-500">Swipe down to close</p>
           </div>
         </div>
-        <div class="content-card py-8 flex justify-center" ref="sectionContentRef">
-          <div container>
-            <CardContent w-full :member="member" />
-          </div>
+        <div class="content-card flex justify-center" ref="sectionContentRef">
+          <CardContent w-full :member="member" />
         </div>
       </div>
     </template>
@@ -86,12 +84,17 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useToast } from "primevue/usetoast";
 import { useScroll } from "@vueuse/core";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const toast = useToast();
 const route = useRoute();
 
 const sectionContentRef = ref<HTMLElement | null>(null);
-const { arrivedState: sectionContentArrivedState } = useScroll(sectionContentRef);
+const { y: sectionContentY, arrivedState: sectionContentArrivedState } =
+  useScroll(sectionContentRef);
 const CardCanvasRef = ref();
 const steps = ref<"intro" | "name" | "email" | "confirm">("intro");
 const rotating = ref(false);
@@ -157,7 +160,7 @@ const handleTouchEnd = (e: TouchEvent) => {
 
 const handleGesture = () => {
   if (isAnimating) return;
-
+  if (sectionContentY.value > 5 && isSectionUp.value) return;
   const swipeThreshold = 50;
 
   if (touchStartY - touchEndY > swipeThreshold && !isSectionUp.value) {
@@ -198,19 +201,19 @@ const triggerAnimation = () => {
   position: fixed;
   top: calc(100% - 5rem); // 初始位置
   width: 100%;
-  height: 100%;
   bottom: 0;
   transition: top 0.5s ease; // 添加過渡效果，持續時間需與腳本中的 animationDuration 相匹配
   &.up {
-    top: 10%;
+    top: 0%;
   }
   .content-card {
     background-color: rgba(250, 250, 250, 0.7);
-    border-radius: 2rem;
+    border-radius: 1rem 1rem 0 0;
     backdrop-filter: blur(10px);
-    height: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    height: calc(100% - 5rem);
+
   }
   .swipe-up-icon {
     animation: bounce 1s infinite;

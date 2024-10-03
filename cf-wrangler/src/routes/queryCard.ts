@@ -1,6 +1,7 @@
 // src/routes/queryCard.ts
 import { queryFirst, execute } from "../db.js";
-import { jsonResponse } from "../utils/response.js";
+import { jsonResponse } from "../utils/response";
+import { verifyCode } from "../utils/codeUtils";
 
 /**
  * 處理 queryCard/:id 請求
@@ -9,6 +10,14 @@ import { jsonResponse } from "../utils/response.js";
  * @returns {Promise<Response>}
  */
 export async function handleQueryCard(id: string, env: Env): Promise<Response> {
+	const CODE_SECRET_KEY = env.CODE_SECRET_KEY;
+
+	// 驗證 ID 是否合法
+	const isValid = verifyCode(id, CODE_SECRET_KEY);
+	if (!isValid) {
+		return jsonResponse({ error: "Invalid ID" }, 400);
+	}
+
 	// 查詢卡片是否存在
 	const selectCard = await queryFirst(
 		env,

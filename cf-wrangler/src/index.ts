@@ -1,6 +1,7 @@
 // src/index.ts
-import { handleQueryCard } from "./routes/queryCard.js";
-import { handleInitCard } from "./routes/initCard.js";
+import { handleQueryCard } from "./routes/queryCard";
+import { handleInitCard } from "./routes/initCard";
+import { handleGenerateCardId } from "./routes/generateCardId";
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -22,6 +23,18 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 	}
 
 	if (path.length !== 2) {
+		const action = path[0];
+		if (action === "generateCardId") {
+			if (request.method !== "GET") {
+				return new Response("Method Not Allowed", { status: 405 });
+			}
+			const token = url.searchParams.get("token");
+			if (token !== env.TOKEN) {
+				return new Response("Unauthorized", { status: 401 });
+			}
+			return await handleGenerateCardId(env);
+		}
+
 		return new Response("Not Found", { status: 404 });
 	}
 
@@ -53,7 +66,7 @@ async function handleOptions() {
 	const corsHeaders = {
 		"Access-Control-Allow-Origin": "*",
 		"Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+		"Access-Control-Allow-Headers": "Content-Type",
 	};
 
 	return new Response("okay", {

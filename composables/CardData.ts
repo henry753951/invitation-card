@@ -1,6 +1,6 @@
 export const useCardData = async (id: string, onLoad: void) => {
   const { data, refresh } = await useAsyncData(async () => {
-    const { data } = await useFetch<{
+    const { data, error } = await useFetch<{
       id: string;
       nth: number;
       user: {
@@ -9,6 +9,13 @@ export const useCardData = async (id: string, onLoad: void) => {
         email: string;
       } | null;
     }>(`https://nuk-gdg.henry0725.workers.dev/queryCard/${id}`);
+
+    if (error.value) {
+      console.error(error);
+      showError(error.value);
+      throw new Error("無法取得資料");
+    }
+
     return {
       id: data.value?.id,
       nth: data.value?.nth.toString().padStart(6, "0"),
