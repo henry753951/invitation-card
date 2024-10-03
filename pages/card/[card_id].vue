@@ -87,6 +87,16 @@ import { useScroll } from "@vueuse/core";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+useHead({
+  title: "GDG on Campus | 開發者俱樂部",
+  meta: [
+    {
+      name: "description",
+      content: "歡迎加入 GDG on Campus 開發者俱樂部，一起學習、分享、成長。",
+    },
+  ],
+});
+
 gsap.registerPlugin(ScrollTrigger);
 
 const toast = useToast();
@@ -213,7 +223,6 @@ const triggerAnimation = () => {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     height: calc(100% - 5rem);
-
   }
   .swipe-up-icon {
     animation: bounce 1s infinite;
