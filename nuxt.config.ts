@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          api: "modern",
+          api: "modern-compiler",
         },
       },
     },
