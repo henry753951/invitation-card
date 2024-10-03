@@ -2,7 +2,9 @@
 import { useGLTF } from "@tresjs/cientos";
 const emits = defineEmits(["onload"]);
 const { scene: model } = await useGLTF("/_nuxt/assets/models/card.1.gltf");
-emits("onload");
+setTimeout(() => {
+  emits("onload");
+}, 1300);
 </script>
 
 <template>

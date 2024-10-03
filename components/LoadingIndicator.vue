@@ -37,7 +37,7 @@ nuxtApp.hook("page:start", () => {
 nuxtApp.hook("page:finish", () => {
   setTimeout(() => {
     gsap.to(".gdg-content", {
-      duration: 1,
+      duration: 2,
       y: -100,
       ease: "power4.out",
       onComplete: () => {
@@ -45,14 +45,14 @@ nuxtApp.hook("page:finish", () => {
       },
     });
     gsap.to(".loading-screen", {
-      duration: 1,
+      duration: 2,
       opacity: 0,
       ease: "power4.out",
       onComplete: () => {
         isLoading.value = false;
       },
     });
-  }, 200);
+  }, 1200);
 });
 
 watch(isLoading, (newValue) => {

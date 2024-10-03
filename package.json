@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@asika32764/vue-animate": "^3.0.2",
+    "@formkit/auto-animate": "^0.8.2",
     "@nuxt/content": "^2.13.2",
     "@nuxt/devtools": "^1.5.1",
     "@nuxt/eslint": "^0.5.7",
