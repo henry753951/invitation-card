@@ -4,7 +4,7 @@
     <div v-if="isLoading" class="loading-screen">
       <div flex items-center gap-5 class="gdg-content">
         <div h-40px md:h-50px>
-          <img src="~/assets/imgs/logo.png" class="gdg-logo" alt="GDG Logo" />
+          <img src="/assets/imgs/logo.png" class="gdg-logo" alt="GDG Logo" />
         </div>
         <div>
           <h1 class="gdg-text">Google Developer Group</h1>

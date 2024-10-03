@@ -2,7 +2,7 @@
 import { Noir } from "./primevue";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  ssr:false,
+  ssr: false,
   devtools: { enabled: true },
   css: ["@unocss/reset/tailwind-compat.css"],
   primevue: {
@@ -25,6 +25,15 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@vueuse/motion/nuxt",
     "@vueuse/motion/nuxt",
-    "@formkit/auto-animate/nuxt"
+    "@formkit/auto-animate/nuxt",
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern",
+        },
+      },
+    },
+  },
 });

@@ -182,7 +182,7 @@ defineExpose({
         <div flex flex-col gap-3 z="-10" w-200px h-130px p-4 relative class="back-html">
           <div flex w-full gap-3>
             <div class="badge" p-2>
-              <img src="~/assets/imgs/logo.png" alt="GDG Logo" h-10px />
+              <img src="/assets/imgs/logo.png" alt="GDG Logo" h-10px />
             </div>
             <div class="badge" p-1 w-full bg-gray-200 opacity-50>
               {{ member.name ? member.name : "Your name" }}
