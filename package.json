@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cloudflare": "NITRO_PRESET=static nuxt generate && cp -r dist/_worker.js public/_routes.json .output/public/ && rm -r dist && mv .output/public dist",
+    "cloudflare": "nuxt build && wrangler pages deploy dist/",
     "build": "nuxt build",
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
