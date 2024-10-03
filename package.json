@@ -3,7 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cloudflare": "nuxt build && wrangler pages deploy dist/",
     "build": "nuxt build",
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
