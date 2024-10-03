@@ -27,9 +27,6 @@ export default defineNuxtConfig({
     "@vueuse/motion/nuxt",
     "@formkit/auto-animate/nuxt",
   ],
-  nitro: {
-    preset: "cloudflare-pages-static",
-  },
   vite: {
     css: {
       preprocessorOptions: {
