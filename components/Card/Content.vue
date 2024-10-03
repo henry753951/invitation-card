@@ -28,7 +28,7 @@
       <div class="flex justify-center space-x-8">
         <!-- Instagram 連結 -->
         <a
-          href="https://www.instagram.com/yourclub"
+          href="https://www.instagram.com/gdsc.nuk"
           target="_blank"
           rel="noopener noreferrer"
           class="flex flex-col items-center hover:text-blue-600 transition-colors"
@@ -36,10 +36,20 @@
           <Icon name="mdi:instagram" size="48" />
           <span class="mt-2 text-sm">Instagram</span>
         </a>
+        <!-- GDG 連結 -->
+        <a
+          href="https://gdg.community.dev/gdg-on-campus-national-university-of-kaohsiung-kaohsiung-city-taiwan/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center hover:text-blue-600 transition-colors"
+        >
+          <Icon name="mdi:google" size="48" />
+          <span class="mt-2 text-sm">GDG on Campus</span>
+        </a>
 
         <!-- Discord 連結 -->
         <a
-          href="https://discord.gg/yourclub"
+          href="https://discord.gg/JwvusDxDe2"
           target="_blank"
           rel="noopener noreferrer"
           class="flex flex-col items-center hover:text-indigo-600 transition-colors"
