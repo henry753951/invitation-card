@@ -2,7 +2,7 @@
 import { Noir } from "./primevue";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  ssr: true,
+  ssr: false,
   devtools: { enabled: true },
   css: ["@unocss/reset/tailwind-compat.css"],
   primevue: {
